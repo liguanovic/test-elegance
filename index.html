@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAIRA - Joaillerie d'Exception</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <img src="pictures/logo2.png" alt="Logo Elegance"> </a>
+
+        <button class="menu-hamburger" id="menu-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#about">À Propos</a></li>
+            <li class="has-submenu">
+                <a href="catalogue.html" class="catalogue-link">
+                    Catalogue
+                    <svg class="chevron" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+                <ul class="submenu">
+                    <li><a href="catalogue.html">Toutes les catégories</a></li>
+                    <li><a href="catalogue.html#bagues">Bagues</a></li>
+                    <li><a href="catalogue.html#bracelets">Bracelets</a></li>
+                    <li><a href="catalogue.html#colliers">Colliers</a></li>
+                    <li><a href="catalogue.html#boucles-oreilles">Boucles d'oreilles</a></li>
+                    <li><a href="catalogue.html#piercings">Piercings</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>L'Art de l'Élégance</h1>
+            <p class="hero-subtitle">Joaillerie d'Exception</p>
+            <a href="#collections" class="cta-button">Découvrir</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section class="collections" id="collections">
+        <h2 class="section-title fade-in">Nos Collections</h2>
+        <p class="section-subtitle fade-in">Des créations uniques, sublimées par l'excellence</p>
+
+        <div class="collection-grid">
+            <div class="collection-card fade-in">
+                <video class="collection-media" autoplay muted loop playsinline>
+                    <source src="video/video1.MP4" type="video/mp4">
+                </video>
+                <div class="collection-info">
+                    <h3>Éternité</h3>
+                    <p>Bagues de fiançailles & alliances</p>
+                </div>
+            </div>
+
+            <div class="collection-card fade-in">
+                <video class="collection-media" autoplay muted loop playsinline>
+                    <source src="video/video2.MP4" type="video/mp4">
+                </video>
+                <div class="collection-info">
+                    <h3>Élégance</h3>
+                    <p>Colliers & pendentifs précieux</p>
+                </div>
+            </div>
+
+            <div class="collection-card fade-in">
+                <video class="collection-media" autoplay muted loop playsinline>
+                    <source src="video/video3.MP4" type="video/mp4">
+                </video>
+                <div class="collection-info">
+                    <h3>Distinction</h3>
+                    <p>Bracelets & manchettes</p>
+                </div>
+            </div>
+
+            <div class="collection-card fade-in">
+                <video class="collection-media" autoplay muted loop playsinline>
+                    <source src="video/video4.MP4" type="video/mp4">
+                </video>
+                <div class="collection-info">
+                    <h3>Prestige</h3>
+                    <p>Boucles d'oreilles & piercings</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="collections-cta">
+            <p class="section-subtitle">Découvrez notre catalogue</p>
+            <a href="catalogue.html" class="cta-button">Catalogue</a>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="about" id="about">
+        <div class="about-content fade-in">
+            <h2>Notre Histoire</h2>
+            <p>La Maison Élégance perpétue une tradition d'excellence dans l'art de la joaillerie. Chaque création est
+                le fruit d'un savoir-faire unique, afin de satisfaire les exigences de nos clients et de leur offrir une
+                experience sur mesure.</p>
+            <p>Nos artisans joailliers sélectionnent avec soin les pierres les plus exceptionnelles pour créer des
+                pièces uniques qui traversent le temps.</p>
+            <p>L'héritage d'un art précieux, sublimé par l'innovation et la passion du détail.</p>
+        </div>
+        <div class="about-image fade-in">
+            <img src="pictures/about.jpg" alt="Atelier de joaillerie KAIRA">
+            </img>
+    </section>
+
+    <!-- SAVOIR-FAIRE -->
+    <section class="savoir-faire" id="savoir-faire">
+        <h2 class="section-title fade-in">Notre Savoir-Faire</h2>
+        <p class="section-subtitle fade-in">L'excellence à chaque étape</p>
+
+        <div class="expertise-grid">
+            <div class="expertise-item fade-in">
+                <div class="expertise-icon">◇</div>
+                <h3>Sélection</h3>
+                <p>Pierres précieuses triées sur le volet ou bien diamands de laboratoires, nous proposons des choix
+                    uniques</p>
+            </div>
+
+            <div class="expertise-item fade-in">
+                <div class="expertise-icon">✦</div>
+                <h3>Création</h3>
+                <p>Designs uniques imaginés par nos maîtres joailliers, alliant tradition et modernité</p>
+            </div>
+
+            <div class="expertise-item fade-in">
+                <div class="expertise-icon">◈</div>
+                <h3>Artisanat</h3>
+                <p>Fabrication entièrement réalisée à la main dans nos ateliers</p>
+            </div>
+
+            <div class="expertise-item fade-in">
+                <div class="expertise-icon">❖</div>
+                <h3>Certification</h3>
+                <p>Chaque pièce est certifiée et accompagnée de son certificat d'authenticité</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <h2 class="section-title fade-in">Nous Rencontrer</h2>
+            <p class="section-subtitle fade-in">Vivez l'expérience ÉLÉGANCE</p>
+
+            <div class="contact-info">
+                <div class="contact-item fade-in">
+                    <h3>Commande</h3>
+                    <p>Pour toute commande, merci de nous contacter par e-mail ou via WhatsApp afin de construire
+                        ensemble votre demande</p>
+                </div>
+
+                <div class="contact-item fade-in">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Dimanche<br>08h00 - 20h00</p>
+                </div>
+
+                <div class="contact-item fade-in">
+                    <h3>Contact</h3>
+                    <p><a href="tel:+33142860000">+33 1 42 86 00 00</a><br>
+                        <a href="mailto:contact@kaira.fr">elegance.jewelry@proton.me</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-wrapper">
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="Tiktok">Tiktok</a>
+                    <a href="#" aria-label="Pinterest">Pinterest</a>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://wa.me/33142860000" aria-label="WhatsApp">WhatsApp</a>
+                    <a href="mailto:elegance.jewelry@proton.me" aria-label="Mail">Mail</a>
+                </div>
+            </div>
+
+            <p class="copyright">© 2026 ÉLÉGANCE. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

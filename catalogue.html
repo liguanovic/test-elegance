@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Catalogue de joaillerie - Bagues, colliers, bracelets, boucles d'oreilles et piercings en or et pierres précieuses. Créations artisanales sur mesure.">
+    <meta name="keywords"
+        content="bijouterie, joaillerie, bagues fiançailles, alliance or, collier diamant, bracelet pierre précieuse, bijoux luxe, création sur mesure">
+    <title>Catalogue - ÉLÉGANCE Joaillerie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="catalogue.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img src="pictures/logo2.png" alt="Logo Elegance">
+        </a>
+
+        <button class="menu-hamburger" id="menu-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#collections">Collections</a></li>
+            <li><a href="index.html#about">À Propos</a></li>
+            <li class="has-submenu">
+                <a href="catalogue.html" class="catalogue-link">
+                    Catalogue
+                    <svg class="chevron" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+                <ul class="submenu">
+                    <li><a href="catalogue.html">Toutes les catégories</a></li>
+                    <li><a href="catalogue.html#bagues">Bagues</a></li>
+                    <li><a href="catalogue.html#bracelets">Bracelets</a></li>
+                    <li><a href="catalogue.html#colliers">Colliers</a></li>
+                    <li><a href="catalogue.html#boucles-oreilles">Boucles d'oreilles</a></li>
+                    <li><a href="catalogue.html#piercings">Piercings</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HEADER -->
+    <section class="catalogue-header">
+        <h1>Notre Catalogue</h1>
+        <p>Découvrez nos créations en or et pierres précieuses • Bagues de fiançailles • Alliances • Colliers •
+            Bracelets • Joaillerie sur mesure</p>
+    </section>
+
+    <!-- FILTRES CATÉGORIES -->
+    <section class="catalogue-filters">
+        <!-- Menu mobile : select dropdown -->
+        <select class="filter-select-mobile" id="filterSelectMobile">
+            <option value="all">Toutes les catégories</option>
+            <option value="bagues">Bagues</option>
+            <option value="bracelets">Bracelets</option>
+            <option value="colliers">Colliers</option>
+            <option value="boucles-oreilles">Boucles d'oreilles</option>
+            <option value="piercings">Piercings</option>
+        </select>
+
+        <!-- Menu desktop/tablet : ul/li horizontal -->
+        <ul class="filter-list-desktop">
+            <li><a href="#all" class="filter-link active" data-filter="all">Toutes les catégories</a></li>
+            <li><a href="#bagues" class="filter-link" data-filter="bagues">Bagues</a></li>
+            <li><a href="#bracelets" class="filter-link" data-filter="bracelets">Bracelets</a></li>
+            <li><a href="#colliers" class="filter-link" data-filter="colliers">Colliers</a></li>
+            <li><a href="#boucles-oreilles" class="filter-link" data-filter="boucles-oreilles">Boucles d'oreilles</a>
+            </li>
+            <li><a href="#piercings" class="filter-link" data-filter="piercings">Piercings</a></li>
+        </ul>
+    </section>
+
+    <!-- GRILLE PRODUITS -->
+    <section class="catalogue-products">
+        <div class="products-grid" id="productsGrid">
+            <!-- Les produits seront chargés ici depuis produits.json -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-wrapper">
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="Tiktok">Tiktok</a>
+                    <a href="#" aria-label="Pinterest">Pinterest</a>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://wa.me/33142860000" aria-label="WhatsApp">WhatsApp</a>
+                    <a href="mailto:elegance.jewelry@proton.me" aria-label="Mail">Mail</a>
+                </div>
+            </div>
+
+            <p class="copyright">© 2026 ÉLÉGANCE. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="catalogue.js"></script>
+</body>
+
+</html>
