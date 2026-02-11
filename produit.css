@@ -505,6 +505,10 @@
         padding-bottom: 0;
     }
 
+    .similar-products .products-grid::-webkit-scrollbar-thumb {
+        background: var(--or);
+    }
+
 
     .similar-products .product-card {
         flex: none;

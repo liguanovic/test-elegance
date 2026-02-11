@@ -129,34 +129,38 @@ function renderProduct(produit) {
 
 // Afficher les produits similaires
 function renderSimilarProducts(categorie, currentId) {
-    const similar = productsData.filter(p =>
+
+    let similar = productsData.filter(p =>
         p.categorie === categorie && p.id !== currentId
-    ).slice(0, 8);
+    );
 
+    if (similar.length < 8) {
+        const otherProducts = productsData.filter(p =>
+            p.categorie !== categorie && p.id !== currentId
+        );
 
+        const shuffled = otherProducts.sort(() => Math.random() - 0.5);
+
+        similar = [...similar, ...shuffled].slice(0, 8);
+    } else {
+        similar = similar.slice(0, 8);
+    }
 
     const html = similar.map(produit => createProductCard(produit)).join('');
     document.getElementById('similarProductsGrid').innerHTML = html;
 
-
     document.querySelectorAll('.similar-products .product-card').forEach(card => {
         card.style.cursor = 'pointer';
 
-
         card.addEventListener('click', (e) => {
-
-
             if (e.target.closest('.carousel-dots') || e.target.classList.contains('dot')) {
                 return;
             }
-
 
             const productId = card.querySelector('.product-carousel').getAttribute('data-product-id');
             window.location.href = `produit.html?id=${productId}`;
         });
     });
-
-
 
     initSimilarCarousels();
 }

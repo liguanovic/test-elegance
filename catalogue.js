@@ -233,7 +233,18 @@ function initFilters() {
 
     if (selectMobile) {
         selectMobile.addEventListener('change', (e) => {
-            filterProducts(e.target.value);
+            const category = e.target.value;
+            currentFilter = category;
+
+            // AJOUT : Mettre à jour le hash dans l'URL
+            window.location.hash = category;
+
+            // Synchroniser avec les liens desktop
+            filterLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-filter') === category);
+            });
+
+            filterProducts(category);
         });
     }
 
@@ -242,7 +253,18 @@ function initFilters() {
             e.preventDefault();
             filterLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+
             const category = link.getAttribute('data-filter');
+            currentFilter = category;
+
+            // AJOUT : Mettre à jour le hash dans l'URL
+            window.location.hash = category;
+
+            // Synchroniser avec le select mobile
+            if (selectMobile) {
+                selectMobile.value = category;
+            }
+
             filterProducts(category);
         });
     });
