@@ -1,5 +1,4 @@
 // Hamburger menu toggle
-// Hamburger menu toggle
 const menuHamburger = document.getElementById('menu-hamburger');
 const navLinks = document.getElementById('navLinks');
 
@@ -36,56 +35,39 @@ if (catalogueLink && catalogueMenu) {
     // En mobile : toggle au clic sur "Catalogue"
     catalogueLink.addEventListener('click', (e) => {
         if (window.innerWidth < 769) {
-            e.preventDefault(); // Empêcher la navigation
-            catalogueMenu.classList.toggle('active');
-        } else {
-            // En desktop : toggle la classe active pour garder ouvert
+            e.preventDefault();
             catalogueMenu.classList.toggle('active');
         }
+        // En desktop : NE RIEN FAIRE, laisser le hover CSS gérer
     });
 
-    // Fermer SEULEMENT le menu hamburger (pas le sous-menu) quand on clique sur un sous-lien en mobile
+    // Fermer le menu hamburger quand on clique sur un sous-lien en mobile
     const submenuLinks = document.querySelectorAll('.submenu a');
     submenuLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth < 769) {
-                // Ne PAS fermer le sous-menu
-                // catalogueMenu.classList.remove('active'); ← SUPPRIMÉ
-                navLinks.classList.remove('active'); // Ferme seulement le menu hamburger
+                navLinks.classList.remove('active');
             }
         });
     });
 
-    // Garder le sous-menu ouvert si on est sur catalogue.html
-    if (window.location.pathname.includes('catalogue.html')) {
-        catalogueMenu.classList.add('active');
-
-        // Quand on ouvre le menu hamburger, s'assurer que le sous-menu reste ouvert
-        if (menuHamburger && navLinks) {
-            const originalHamburgerClick = menuHamburger.onclick;
-
-            // Observer les changements du menu hamburger
-            const observer = new MutationObserver(() => {
-                if (navLinks.classList.contains('active') && window.innerWidth < 769) {
-                    // Si le menu hamburger s'ouvre, garder le sous-menu ouvert
-                    catalogueMenu.classList.add('active');
-                }
-            });
-
-            observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+    // Garder le sous-menu ouvert UNIQUEMENT sur catalogue.html en mobile
+    if (window.location.pathname.includes('catalogue.html') && !window.location.pathname.includes('produit.html')) {
+        if (window.innerWidth < 769) {
+            catalogueMenu.classList.add('active');
         }
     }
 
-    // Réinitialiser l'état au redimensionnement
+    // Réinitialiser au redimensionnement
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 769) {
             catalogueMenu.classList.remove('active');
-        } else if (window.location.pathname.includes('catalogue.html')) {
-            // Garder ouvert en mobile si on est sur catalogue.html
+        } else if (window.location.pathname.includes('catalogue.html') && !window.location.pathname.includes('produit.html')) {
             catalogueMenu.classList.add('active');
         }
     });
 }
+
 
 
 // Navigation scroll effect

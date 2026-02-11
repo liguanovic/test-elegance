@@ -1,0 +1,303 @@
+/* === PAGE PRODUIT === */
+
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 8rem 5% 1.5rem 5%;
+    background: var(--blanc);
+}
+
+.breadcrumb a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1rem;
+    color: var(--gris);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--or);
+}
+
+/* SECTION PRODUIT */
+.produit-section {
+    padding: 0 5%;
+    background: var(--blanc);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.produit-container {
+    margin-bottom: 3rem;
+}
+
+/* Info produit */
+.product-info {
+    margin-bottom: 2rem;
+}
+
+.product-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    color: var(--noir);
+    margin-bottom: 0.5rem;
+}
+
+.product-info p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gris);
+    letter-spacing: 0.05rem;
+    font-weight: 300;
+}
+
+/* Description détaillée */
+.product-description-detail {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--or-clair);
+}
+
+.product-description-detail h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    color: var(--noir);
+    margin-bottom: 1rem;
+}
+
+.product-description-detail p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gris);
+    line-height: 1.8;
+    letter-spacing: 0.05rem;
+    font-weight: 300;
+}
+
+/* PRODUITS SIMILAIRES */
+.similar-products {
+    padding: 1rem 5%;
+    background: linear-gradient(135deg, var(--blanc) 0%, var(--or-clair) 100%);
+}
+
+.similar-products h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    color: var(--noir);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* MOBILE : Scroll horizontal avec 2 produits visibles */
+.similar-products .products-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--or) var(--or-clair);
+}
+
+.similar-products .products-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.similar-products .products-grid::-webkit-scrollbar-track {
+    background: var(--or-clair);
+    border-radius: 10px;
+}
+
+.similar-products .products-grid::-webkit-scrollbar-thumb {
+    background: var(--or);
+    border-radius: 10px;
+}
+
+.similar-products .product-card {
+    flex: 0 0 calc(50% - 0.75rem);
+    scroll-snap-align: start;
+    min-width: calc(50% - 0.75rem);
+}
+
+/* BOUTONS DE CONTACT */
+.contact-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 200px;
+    flex: 1;
+}
+
+.btn-icon {
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.btn-whatsapp .btn-icon {
+    font-size: 30px;
+}
+
+.btn-mail .btn-icon {
+    font-size: 24px;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: #FFFFFF;
+    border: 2px solid #25D366;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    border-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-mail {
+    background: transparent;
+    color: var(--or);
+    border: 2px solid var(--or);
+}
+
+.btn-mail:hover {
+    background: var(--or);
+    color: var(--blanc);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+
+/* === TABLET (769px - 1023px) === */
+@media (min-width: 769px) {
+
+    .produit-section {
+        max-width: 1400px;
+        padding: 0 5%;
+    }
+
+    .produit-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+
+
+    .product-visual {
+        width: 450px;
+        flex-shrink: 0;
+    }
+
+    .product-content {
+        flex: 1;
+    }
+
+    .product-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-info p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .product-description-detail {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .product-description-detail h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-description-detail p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .similar-products h2 {
+        font-size: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .similar-products .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .similar-products .product-card {
+        flex: none;
+        min-width: auto;
+    }
+}
+
+/* === DESKTOP (1024px et +) === */
+@media (min-width: 1024px) {
+
+    .product-visual {
+        width: 350px;
+    }
+
+    .product-info h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-info p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .product-description-detail {
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+
+    .product-description-detail h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .product-description-detail p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+    }
+
+    .contact-buttons a {
+        width: 160px;
+        flex: 0 0 250px;
+    }
+}

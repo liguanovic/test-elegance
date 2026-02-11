@@ -115,6 +115,7 @@ nav.scrolled {
 }
 
 .nav-links {
+    align-items: center;
     gap: 1.5rem;
     list-style: none;
     position: fixed;
@@ -134,6 +135,17 @@ nav.scrolled {
 
 .nav-links.active {
     transform: translateX(0);
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.catalogue-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
 }
 
 .nav-links a {
@@ -252,6 +264,24 @@ nav.scrolled {
 .submenu a::before {
     display: none;
 }
+
+.collections-cta .cta-button {
+    background: var(--or);
+    border: 2px solid var(--noir);
+    color: var(--blanc);
+}
+
+.collections-cta .cta-button::before {
+    background: var(----blanc);
+}
+
+.collections-cta .cta-button:hover {
+    background: var(--noir);
+    border: 2px solid var(--or);
+    color: var(--or);
+}
+
+
 
 /* === TABLET & DESKTOP (min-width: 769px) === */
 @media (min-width: 769px) {
@@ -1057,5 +1087,17 @@ footer {
         gap: 3rem;
         max-width: 1000px;
         margin: 0 auto 3rem auto;
+    }
+}
+
+/* === AJUSTEMENT NAVBAR (769px - 859px) === */
+@media (min-width: 769px) and (max-width: 859px) {
+    nav {
+        padding: 2rem 2%;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        gap: 1.2rem;
     }
 }

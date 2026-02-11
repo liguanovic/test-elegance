@@ -5,12 +5,12 @@ let productsData = [];
 // === FILTRAGE AUTOMATIQUE AU CHARGEMENT ===
 
 function applyHashFilter() {
-    const hash = window.location.hash.substring(1); // Enlever le #
+    const hash = window.location.hash.substring(1);
 
     if (hash && hash !== 'all') {
-        // Attendre que les produits soient chargés
+
         setTimeout(() => {
-            // En mobile : changer le select
+
             const selectMobile = document.getElementById('filterSelectMobile');
             if (selectMobile) {
                 selectMobile.value = hash;
@@ -313,5 +313,30 @@ function initCarousels() {
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts().then(() => {
         initFilters();
+    });
+});
+
+// === RENDRE LES CARDS CLIQUABLES ===
+function makeCardsClickable() {
+    const productCards = document.querySelectorAll('.product-card');
+
+    productCards.forEach(card => {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', (e) => {
+            // Ne pas rediriger si on clique sur un dot
+            if (e.target.classList.contains('dot')) return;
+
+            const productId = card.querySelector('.product-carousel').getAttribute('data-product-id');
+            window.location.href = `produit.html?id=${productId}`;
+        });
+    });
+}
+
+// Appeler après le chargement des produits
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts().then(() => {
+        initFilters();
+        makeCardsClickable(); // ← AJOUTEZ CETTE LIGNE
     });
 });
