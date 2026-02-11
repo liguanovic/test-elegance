@@ -2,21 +2,44 @@
 <html lang="fr">
 
 <head>
+    <!-- Meta de base -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Catalogue Bijoux | Bagues, Colliers, Bracelets | ÉLÉGANCE Jewelry</title>
     <meta name="description"
-        content="Catalogue de joaillerie - Bagues, colliers, bracelets, boucles d'oreilles et piercings en or et pierres précieuses. Créations artisanales sur mesure.">
+        content="Découvrez notre catalogue de bijoux en or et diamants : bagues de fiançailles, alliances, colliers, bracelets, boucles d'oreilles et piercings. Créations artisanales.">
     <meta name="keywords"
-        content="bijouterie, joaillerie, bagues fiançailles, alliance or, collier diamant, bracelet pierre précieuse, bijoux luxe, création sur mesure, bagues or, colliers or, bracelets or, boucles d'oreilles or, piercings or">
-    <title>Catalogue - ÉLÉGANCE Joaillerie</title>
+        content="catalogue bijoux, bagues or, colliers diamants, bracelets or, boucles oreilles or, piercings or, bijoux luxe, joaillerie artisanale">
+    <meta name="author" content="ÉLÉGANCE Jewelry">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="pictures/logo2.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Catalogue Bijoux | ÉLÉGANCE Jewelry">
+    <meta property="og:description"
+        content="Collection complète de bijoux en or et diamants. Créations artisanales d'exception.">
+    <meta property="og:image" content="pictures/logo2.png">
+    <meta property="og:url" content="https://www.elegance-jewelry.com/catalogue.html">
+    <meta property="og:type" content="website">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.elegance-jewelry.com/catalogue.html">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap"
         rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="catalogue.css">
 </head>
+
 
 <body>
     <nav id="navbar">
@@ -49,6 +72,7 @@
                     <li><a href="catalogue.html#colliers">Colliers</a></li>
                     <li><a href="catalogue.html#boucles-oreilles">Boucles d'oreilles</a></li>
                     <li><a href="catalogue.html#piercings">Piercings</a></li>
+                    <li><a href="catalogue.html#diamants">Diamants</a></li>
                 </ul>
             </li>
             <li><a href="index.html#contact">Contact</a></li>
@@ -73,6 +97,7 @@
             <option value="colliers">Colliers</option>
             <option value="boucles-oreilles">Boucles d'oreilles</option>
             <option value="piercings">Piercings</option>
+            <option value="diamants">Diamants</option>
         </select>
 
         <!-- Menu desktop/tablet : ul/li horizontal -->
@@ -84,14 +109,18 @@
             <li><a href="#boucles-oreilles" class="filter-link" data-filter="boucles-oreilles">Boucles d'oreilles</a>
             </li>
             <li><a href="#piercings" class="filter-link" data-filter="piercings">Piercings</a></li>
+            <li><a href="#diamants" class="filter-link" data-filter="diamants">Diamants</a></li>
         </ul>
     </section>
 
-    <!-- GRILLE PRODUITS -->
+    <!-- GRILLE PRODUITS AVEC PAGINATION -->
     <section class="catalogue-products">
         <div class="products-grid" id="productsGrid">
             <!-- Les produits seront chargés ici depuis produits.json -->
         </div>
+
+        <!-- PAGINATION -->
+        <div id="pagination"></div>
     </section>
 
     <footer>

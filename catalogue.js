@@ -1,22 +1,29 @@
-// === CATALOGUE JS ===
+// === CATALOGUE JS AVEC PAGINATION ===
 
 let productsData = [];
+let currentPage = 1;
+let itemsPerPage = 8; // Par défaut mobile
+
+// Calculer itemsPerPage selon la largeur d'écran
+function updateItemsPerPage() {
+    if (window.innerWidth >= 769) {
+        itemsPerPage = 12; // Tablet & Desktop
+    } else {
+        itemsPerPage = 8; // Mobile
+    }
+}
 
 // === FILTRAGE AUTOMATIQUE AU CHARGEMENT ===
-
 function applyHashFilter() {
     const hash = window.location.hash.substring(1);
 
     if (hash && hash !== 'all') {
-
         setTimeout(() => {
-
             const selectMobile = document.getElementById('filterSelectMobile');
             if (selectMobile) {
                 selectMobile.value = hash;
             }
 
-            // En desktop : activer le bon filtre
             const filterLinks = document.querySelectorAll('.filter-link');
             filterLinks.forEach(link => {
                 link.classList.remove('active');
@@ -25,55 +32,30 @@ function applyHashFilter() {
                 }
             });
 
-            // Filtrer les produits
-            const productCards = document.querySelectorAll('.product-card');
-            productCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (cardCategory === hash) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
+            filterProducts(hash);
         }, 100);
     }
 }
 
 // === MARQUER LE LIEN ACTIF DANS LE MENU ===
-
 function markActiveSubmenuLink() {
     const hash = window.location.hash.substring(1) || 'all';
-
-    // Trouver tous les liens du sous-menu dans la navbar
     const submenuLinks = document.querySelectorAll('.submenu a');
 
     submenuLinks.forEach(link => {
-        // Enlever la classe active de tous les liens
         link.classList.remove('active');
-
-        // Extraire la catégorie depuis le href du lien
         const linkHash = link.getAttribute('href').split('#')[1] || 'all';
 
-        // Ajouter la classe active au lien correspondant
         if (linkHash === hash || (hash === '' && linkHash === 'all')) {
             link.classList.add('active');
         }
     });
 }
 
-// Appeler au chargement de la page
 window.addEventListener('DOMContentLoaded', markActiveSubmenuLink);
-
-// Appeler quand le hash change (navigation dans la page)
 window.addEventListener('hashchange', markActiveSubmenuLink);
-
-
-// Appeler au chargement
 window.addEventListener('load', applyHashFilter);
-
-// Appeler quand le hash change
 window.addEventListener('hashchange', applyHashFilter);
-
 
 // Charger les produits depuis le JSON
 async function loadProducts() {
@@ -81,6 +63,7 @@ async function loadProducts() {
         const response = await fetch('produits.json');
         const data = await response.json();
         productsData = data.produits;
+        updateItemsPerPage();
         renderProducts(productsData);
         initCarousels();
     } catch (error) {
@@ -88,21 +71,16 @@ async function loadProducts() {
     }
 }
 
-// Détecter si c'est une vidéo par l'extension
+// Détecter si c'est une vidéo
 function isVideo(filename) {
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
     return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
 }
 
-// Générer le HTML d'un média (image ou vidéo)
-// Générer le HTML d'un média (image ou vidéo)
+// Générer le HTML d'un média
 function createMediaHTML(mediaSrc, alt) {
     if (isVideo(mediaSrc)) {
-        return `<video class="carousel-video" 
-                    autoplay 
-                    muted 
-                    loop 
-                    playsinline>
+        return `<video class="carousel-video" autoplay muted loop playsinline>
                     <source src="${mediaSrc}" type="video/mp4">
                 </video>`;
     } else {
@@ -110,25 +88,15 @@ function createMediaHTML(mediaSrc, alt) {
     }
 }
 
-
-
 // Générer le HTML d'une card produit
 function createProductCard(produit) {
-    // Utiliser 'images' ou 'medias' (compatibilité)
     const medias = produit.medias || produit.images || [];
-
-    // Créer les médias du carousel
     const mediasHTML = medias.map(media => createMediaHTML(media, produit.nom)).join('');
-
-    // Créer les dots
     const dotsHTML = medias.map((_, index) =>
         `<span class="dot ${index === 0 ? 'active' : ''}"></span>`
     ).join('');
 
-    // Nom de la classe pour la matière
     const materiereClass = `material-${produit.matiere}`;
-
-    // Texte à afficher pour la matière
     const matiereTexts = {
         'or-jaune': 'Or Jaune',
         'or-blanc': 'Or Blanc',
@@ -157,60 +125,130 @@ function createProductCard(produit) {
     `;
 }
 
-// Afficher les produits dans la grille
+// Afficher les produits avec pagination
 function renderProducts(products) {
     const grid = document.getElementById('productsGrid');
-    const html = products.map(produit => createProductCard(produit)).join('');
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedProducts = products.slice(startIndex, endIndex);
+
+    const html = paginatedProducts.map(produit => createProductCard(produit)).join('');
     grid.innerHTML = html;
+
+    renderPagination(products.length);
+    makeCardsClickable();
+    initCarousels();
 }
 
-// Gestion des filtres (mobile + desktop)
+// Créer la pagination
+function renderPagination(totalItems) {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const paginationContainer = document.getElementById('pagination');
+
+    if (totalPages <= 1) {
+        paginationContainer.innerHTML = '';
+        return;
+    }
+
+    let paginationHTML = '<div class="pagination-wrapper">';
+
+    // Bouton précédent
+    if (currentPage > 1) {
+        paginationHTML += `<button class="pagination-arrow" onclick="changePage(${currentPage - 1})">‹</button>`;
+    } else {
+        paginationHTML += `<button class="pagination-arrow disabled">‹</button>`;
+    }
+
+    // Pages numérotées
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationHTML += `<button class="pagination-number ${activeClass}" onclick="changePage(${i})">${i}</button>`;
+        } else if (i === currentPage - 2 || i === currentPage + 2) {
+            paginationHTML += `<span class="pagination-dots">...</span>`;
+        }
+    }
+
+    // Bouton suivant
+    if (currentPage < totalPages) {
+        paginationHTML += `<button class="pagination-arrow" onclick="changePage(${currentPage + 1})">›</button>`;
+    } else {
+        paginationHTML += `<button class="pagination-arrow disabled">›</button>`;
+    }
+
+    paginationHTML += '</div>';
+    paginationContainer.innerHTML = paginationHTML;
+}
+
+// Changer de page
+function changePage(page) {
+    currentPage = page;
+    const currentCategory = getCurrentCategory();
+    const filteredProducts = getFilteredProducts(currentCategory);
+    renderProducts(filteredProducts);
+
+    // Scroller jusqu'aux filtres (toutes tailles d'écran)
+    const filtersSection = document.querySelector('.catalogue-filters');
+    if (filtersSection) {
+        const offsetTop = filtersSection.offsetTop - 100;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
+}
+
+
+
+
+// Obtenir la catégorie actuelle
+function getCurrentCategory() {
+    const activeLink = document.querySelector('.filter-link.active');
+    const selectMobile = document.getElementById('filterSelectMobile');
+
+    if (activeLink) {
+        return activeLink.getAttribute('data-filter');
+    } else if (selectMobile) {
+        return selectMobile.value;
+    }
+    return 'all';
+}
+
+// Filtrer les produits
+function getFilteredProducts(category) {
+    if (category === 'all') {
+        return productsData;
+    }
+    return productsData.filter(p => p.categorie === category);
+}
+
+// Fonction de filtrage
+function filterProducts(category) {
+    currentPage = 1; // Reset à la page 1
+    const filtered = getFilteredProducts(category);
+    renderProducts(filtered);
+}
+
+// Gestion des filtres
 function initFilters() {
     const selectMobile = document.getElementById('filterSelectMobile');
     const filterLinks = document.querySelectorAll('.filter-link');
 
-    // Fonction de filtrage
-    function filterProducts(category) {
-        const productCards = document.querySelectorAll('.product-card');
-
-        productCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-
-            if (category === 'all' || cardCategory === category) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-    }
-
-    // Filtre mobile (select)
     if (selectMobile) {
         selectMobile.addEventListener('change', (e) => {
-            const selectedCategory = e.target.value;
-            filterProducts(selectedCategory);
+            filterProducts(e.target.value);
         });
     }
 
-    // Filtres desktop (liens)
     filterLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-
-            // Retirer la classe active de tous les liens
             filterLinks.forEach(l => l.classList.remove('active'));
-
-            // Ajouter la classe active au lien cliqué
             link.classList.add('active');
-
-            // Filtrer les produits
             const category = link.getAttribute('data-filter');
             filterProducts(category);
         });
     });
 }
 
-// Gestion des carousels avec support vidéo
+// Gestion des carousels
 function initCarousels() {
     const carousels = document.querySelectorAll('.product-carousel');
 
@@ -224,18 +262,15 @@ function initCarousels() {
 
         let currentIndex = 0;
 
-        // Fonction pour aller à une slide
         function goToSlide(index) {
             currentIndex = index;
             const offset = -currentIndex * 100;
             track.style.transform = `translateX(${offset}%)`;
 
-            // Mettre à jour les dots
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
             });
 
-            // Gérer les vidéos
             medias.forEach((media, i) => {
                 if (media.tagName === 'VIDEO') {
                     if (i === currentIndex) {
@@ -248,12 +283,10 @@ function initCarousels() {
             });
         }
 
-        // Navigation par dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => goToSlide(index));
         });
 
-        // Swipe tactile
         let startX = 0;
         let isDragging = false;
 
@@ -278,7 +311,6 @@ function initCarousels() {
             }
         });
 
-        // Navigation au clic (desktop)
         carousel.addEventListener('click', (e) => {
             if (e.target.closest('.dot') || e.target.tagName === 'VIDEO') return;
 
@@ -292,12 +324,10 @@ function initCarousels() {
             }
         });
 
-        // Lancer la première vidéo au chargement
         setTimeout(() => {
             const firstMedia = medias[0];
             if (firstMedia?.tagName === 'VIDEO') {
                 firstMedia.play().catch(() => {
-                    // Si autoplay bloqué, jouer au premier clic
                     carousel.addEventListener('click', () => {
                         firstMedia.play();
                     }, { once: true });
@@ -307,16 +337,7 @@ function initCarousels() {
     });
 }
 
-
-
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-    loadProducts().then(() => {
-        initFilters();
-    });
-});
-
-// === RENDRE LES CARDS CLIQUABLES ===
+// Rendre les cards cliquables
 function makeCardsClickable() {
     const productCards = document.querySelectorAll('.product-card');
 
@@ -324,7 +345,6 @@ function makeCardsClickable() {
         card.style.cursor = 'pointer';
 
         card.addEventListener('click', (e) => {
-            // Ne pas rediriger si on clique sur un dot
             if (e.target.classList.contains('dot')) return;
 
             const productId = card.querySelector('.product-carousel').getAttribute('data-product-id');
@@ -333,10 +353,21 @@ function makeCardsClickable() {
     });
 }
 
-// Appeler après le chargement des produits
+// Recalculer au resize
+window.addEventListener('resize', () => {
+    const oldItemsPerPage = itemsPerPage;
+    updateItemsPerPage();
+    if (oldItemsPerPage !== itemsPerPage) {
+        currentPage = 1;
+        const currentCategory = getCurrentCategory();
+        const filtered = getFilteredProducts(currentCategory);
+        renderProducts(filtered);
+    }
+});
+
+// Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts().then(() => {
         initFilters();
-        makeCardsClickable(); // ← AJOUTEZ CETTE LIGNE
     });
 });

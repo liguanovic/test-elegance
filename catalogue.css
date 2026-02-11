@@ -323,6 +323,81 @@
     }
 }
 
+/* === PAGINATION === */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 3rem auto;
+    flex-wrap: wrap;
+}
+
+.pagination-arrow,
+.pagination-number {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--or);
+    background: transparent;
+    border: 1px solid var(--or);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-arrow {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.pagination-arrow:hover:not(.disabled),
+.pagination-number:hover:not(.active) {
+    background: var(--or);
+    color: var(--blanc);
+}
+
+.pagination-number.active {
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: var(--or);
+    color: var(--blanc);
+    border-color: var(--or);
+}
+
+.pagination-arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.pagination-dots {
+    color: var(--or);
+    font-size: 1.2rem;
+    padding: 0 0.3rem;
+}
+
+@media (min-width: 769px) {
+    .pagination-wrapper {
+        gap: 0.8rem;
+    }
+
+    .pagination-arrow,
+    .pagination-number {
+        min-width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .pagination-number.active {
+        font-size: 1.3rem;
+    }
+}
+
+
 /* === DESKTOP LARGE (min-width: 1200px) === */
 @media (min-width: 1200px) {
     .products-grid {

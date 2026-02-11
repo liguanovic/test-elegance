@@ -151,6 +151,172 @@
         "images/produits/bracelet1-2.jpg",
         "images/produits/bracelet1-3.jpg"
       ]
+    },
+    {
+      "id": 13,
+      "nom": "Solitaire Éternité",
+      "categorie": "bagues",
+      "matiere": "or-jaune",
+      "description": "Bague de fiançailles sertie d'un diamant exceptionnel",
+      "description_detaillee": "Cette bague de fiançailles exceptionnelle en or jaune 18 carats est sertie d'un diamant taille brillant de qualité supérieure. Le solitaire met en valeur la pureté et l'éclat de la pierre précieuse avec une monture raffinée et intemporelle. Chaque détail est travaillé avec soin pour créer un bijou unique qui symbolise l'amour éternel.",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg",
+        "images/produits/bague1-4.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "nom": "Alliance Intemporelle",
+      "categorie": "bagues",
+      "matiere": "or-blanc",
+      "description": "Alliance sertie de diamants tout au long",
+      "description_detaillee": "Cette bague de fiançailles exceptionnelle en or jaune 18 carats est sertie d'un diamant taille brillant de qualité supérieure. Le solitaire met en valeur la pureté et l'éclat de la pierre précieuse avec une monture raffinée et intemporelle. Chaque détail est travaillé avec soin pour créer un bijou unique qui symbolise l'amour éternel.",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "nom": "Bague Royale",
+      "categorie": "bagues",
+      "matiere": "or-rose",
+      "description": "Pierre centrale entourée de diamants",
+      "description_detaillee": "Cette bague de fiançailles exceptionnelle en or jaune 18 carats est sertie d'un diamant taille brillant de qualité supérieure. Le solitaire met en valeur la pureté et l'éclat de la pierre précieuse avec une monture raffinée et intemporelle. Chaque détail est travaillé avec soin pour créer un bijou unique qui symbolise l'amour éternel.",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 16,
+      "nom": "Collier Prestige",
+      "categorie": "colliers",
+      "matiere": "platine",
+      "description": "Pendentif diamant sur chaîne fine",
+      "description_detaillee": "Cette bague de fiançailles exceptionnelle en or jaune 18 carats est sertie d'un diamant taille brillant de qualité supérieure. Le solitaire met en valeur la pureté et l'éclat de la pierre précieuse avec une monture raffinée et intemporelle. Chaque détail est travaillé avec soin pour créer un bijou unique qui symbolise l'amour éternel.",
+      "images": [
+        "images/produits/collier1-1.jpg",
+        "images/produits/collier1-2.jpg",
+        "images/produits/collier1-3.jpg"
+      ]
+    },
+    {
+      "id": 17,
+      "nom": "Collier Cascade",
+      "categorie": "colliers",
+      "matiere": "or-jaune",
+      "description": "Collier orné de pierres précieuses en cascade",
+      "images": [
+        "images/produits/collier1-2.jpg",
+        "images/produits/collier1-2.jpg",
+        "images/produits/collier1-3.jpg",
+        "images/produits/collier1-4.mp4",
+        "images/produits/collier1-5.jpg"
+      ]
+    },
+    {
+      "id": 18,
+      "nom": "Bracelet Élégance",
+      "categorie": "bracelets",
+      "matiere": "argent",
+      "description": "Bracelet raffiné serti de pierres fines",
+      "images": [
+        "images/produits/bracelet1-1.jpg",
+        "images/produits/bracelet1-2.jpg",
+        "images/produits/bracelet1-3.jpg"
+      ]
+    },
+    {
+      "id": 19,
+      "nom": "Bracelet Rivière",
+      "categorie": "bracelets",
+      "matiere": "or-blanc",
+      "description": "Bracelet tennis serti de diamants",
+      "images": [
+        "images/produits/bracelet1-1.jpg",
+        "images/produits/bracelet1-2.jpg",
+        "images/produits/bracelet1-3.jpg",
+        "images/produits/bracelet1-4.mp4"
+      ]
+    },
+    {
+      "id": 20,
+      "nom": "Boucles Éclat",
+      "categorie": "boucles-oreilles",
+      "matiere": "or-rose",
+      "description": "Boucles d'oreilles pendantes ornées de diamants",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 21,
+      "nom": "Puces Classiques",
+      "categorie": "boucles-oreilles",
+      "matiere": "or-jaune",
+      "description": "Puces d'oreilles serties de diamants",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 22,
+      "nom": "Piercing Minimaliste",
+      "categorie": "piercings",
+      "matiere": "or-blanc",
+      "description": "Piercing discret serti d'une pierre fine",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 23,
+      "nom": "Créoles Précieuses",
+      "categorie": "boucles-oreilles",
+      "matiere": "platine",
+      "description": "Créoles ornées de diamants",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg"
+      ]
+    },
+    {
+      "id": 24,
+      "nom": "Manchette Audacieuse",
+      "categorie": "bracelets",
+      "matiere": "or-jaune",
+      "description": "Bracelet manchette large ciselé",
+      "images": [
+        "images/produits/bracelet1-1.jpg",
+        "images/produits/bracelet1-2.jpg",
+        "images/produits/bracelet1-3.jpg"
+      ]
+    },
+    {
+      "id": 25,
+      "nom": "Solitaire Éternité",
+      "categorie": "diamants",
+      "matiere": "or-jaune",
+      "description": "Bague de fiançailles sertie d'un diamant exceptionnel",
+      "description_detaillee": "Cette bague de fiançailles exceptionnelle en or jaune 18 carats est sertie d'un diamant taille brillant de qualité supérieure. Le solitaire met en valeur la pureté et l'éclat de la pierre précieuse avec une monture raffinée et intemporelle. Chaque détail est travaillé avec soin pour créer un bijou unique qui symbolise l'amour éternel.",
+      "images": [
+        "images/produits/bague1-1.jpg",
+        "images/produits/bague1-2.jpg",
+        "images/produits/bague1-3.jpg",
+        "images/produits/bague1-4.jpg"
+      ]
     }
   ]
 }

@@ -64,7 +64,6 @@ body {
 
 /* === MOBILE FIRST STYLES === */
 
-/* === NAVIGATION === */
 nav {
     position: fixed;
     top: 0;
@@ -115,7 +114,7 @@ nav.scrolled {
 }
 
 .nav-links {
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
     list-style: none;
     position: fixed;
@@ -138,8 +137,7 @@ nav.scrolled {
 }
 
 .nav-links li {
-    display: flex;
-    align-items: center;
+    width: 100%;
 }
 
 .catalogue-link {
@@ -157,6 +155,7 @@ nav.scrolled {
     font-weight: 300;
     position: relative;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-links a::before {
@@ -265,21 +264,157 @@ nav.scrolled {
     display: none;
 }
 
-.collections-cta .cta-button {
+.collections-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.catalogue-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    background: var(--blanc);
+    position: relative;
+}
+
+.catalogue-card::before,
+.catalogue-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--or);
+}
+
+.catalogue-card::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.catalogue-card::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+.catalogue-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--noir);
+    margin-bottom: 1rem;
+    letter-spacing: 0.3rem;
+}
+
+.catalogue-card>p {
+    font-size: 0.85rem;
+    color: var(--gris);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.categories-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categories-preview a {
+    font-size: 0.7rem;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    color: var(--gris);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.9rem 0.5rem;
+    border: 1px solid var(--or);
+    background: var(--blanc);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+.categories-preview a:hover {
+    background: var(--or);
+    color: var(--blanc);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+    font-weight: bold;
+}
+
+.catalogue-card .cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--or);
+    color: var(--blanc);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid var(--or);
+    transition: all 0.3s ease;
+}
+
+.catalogue-card .cta-button:hover {
+    background: transparent;
+    color: var(--or);
+    border-color: var(--or);
+}
+
+.catalogue-card .cta-button i {
+    margin-right: 0.6rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .categories-preview {
+        gap: 0.5rem;
+    }
+
+    .categories-preview a {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.9rem;
+    }
+}
+
+
+.collections-cta-card .cta-button {
     background: var(--or);
     border: 2px solid var(--noir);
     color: var(--blanc);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
-.collections-cta .cta-button::before {
-    background: var(----blanc);
-}
-
-.collections-cta .cta-button:hover {
+.collections-cta-card .cta-button:hover {
     background: var(--noir);
     border: 2px solid var(--or);
     color: var(--or);
 }
+
+.collections-cta-card .cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.collections-cta-card .cta-button:hover i {
+    transform: translateX(5px);
+}
+
 
 
 
@@ -388,6 +523,40 @@ nav.scrolled {
 
     .submenu a.active::before {
         transform: translateY(-50%) scaleX(1);
+    }
+
+    .catalogue-card {
+        padding: 3.5rem 3rem;
+    }
+
+    .catalogue-card h3 {
+        font-size: 2.5rem;
+    }
+
+    .catalogue-card>p {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .categories-preview {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-width: 100%;
+    }
+
+    .categories-preview a {
+        font-size: 0.75rem;
+        padding: 0.9rem 1.5rem;
+        letter-spacing: 0.15rem;
+        min-width: 140px;
+        flex: 0 0 auto;
+    }
+
+    .catalogue-card .cta-button {
+        padding: 1.1rem 3.5rem;
+        font-size: 0.85rem;
     }
 }
 
